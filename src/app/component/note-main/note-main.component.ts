@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NotesService } from 'src/app/services/notes.service';
+import { INote } from 'src/app/models/note.interface'; 
 
 @Component({
   selector: 'app-note-main',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteMainComponent implements OnInit {
 
-  constructor() { }
+  private data : INote = {
+    
+    title : "Angular Study",
+    content : "I want to study angular and become pro in it",
+    severity : 1,
+    importance : false,
+    deleted : false
+
+  }
+
+
+  
+
+  constructor(private notesService : NotesService) { }
 
   ngOnInit(): void {
   }
+
+createNote(){
+
+this.notesService.createNote(this.data);
+}
 
 }
