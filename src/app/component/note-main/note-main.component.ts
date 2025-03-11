@@ -25,6 +25,10 @@ export class NoteMainComponent implements OnInit {
   constructor(private notesService : NotesService) { }
 
   ngOnInit(): void {
+
+   
+      console.log(this.notesService.getAllNotes());
+    
   }
 
 createNote(){

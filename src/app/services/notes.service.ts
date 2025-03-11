@@ -69,8 +69,15 @@ export class NotesService {
   }
 
   getAllNotes () {
+    const allNotes = localStorage.getItem("app_data");
+    if(allNotes != null){
+    const allNotesArray = JSON.parse(allNotes);
+    return allNotesArray;
 
-
+    }
+    else {
+            return [];
+    }
 
   }
 }
