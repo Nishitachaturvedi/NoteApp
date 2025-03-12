@@ -9,15 +9,17 @@ import { INote } from 'src/app/models/note.interface';
 })
 export class NoteMainComponent implements OnInit {
 
-  private data : INote = {
+  public data : INote = {
     
     title : "Angular Study",
     content : "I want to study angular and become pro in it",
-    severity : 1,
+    severity : 3,
     importance : false,
     deleted : false
 
   }
+
+  public notesData : INote[] = [];
 
 
   
@@ -25,6 +27,8 @@ export class NoteMainComponent implements OnInit {
   constructor(private notesService : NotesService) { }
 
   ngOnInit(): void {
+
+    this.getAllNote ();
 
    
       console.log(this.notesService.getAllNotes());
@@ -34,6 +38,15 @@ export class NoteMainComponent implements OnInit {
 createNote(){
 
 this.notesService.createNote(this.data);
+this.getAllNote ();
+
+}
+
+getAllNote ()
+{
+  this.notesData = this.notesService.getAllNotes();
+
+
 }
 
 }

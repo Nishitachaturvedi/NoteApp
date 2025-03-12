@@ -1,28 +1,11 @@
 <div class="note-app">
-    <button (click) = "createNote()" class="create-btn">Create Note</button>
+    <button (click) = "createNote()" class="create-btn" >Create Note</button>
   
     <div class="notes-container">
-      <div class="note red">
-        <h3 class="note-title">Urgent Task</h3>
-        <p class="note-content">This is an important task that needs immediate attention.</p>
-        <div class="note-actions">
-          <button class="pin-btn">📌</button>
-          <button class="delete-btn">🗑️</button>
-        </div>
-      </div>
-  
-      <div class="note green">
-        <h3 class="note-title">Work in Progress</h3>
-        <p class="note-content">This task is ongoing and needs medium priority.</p>
-        <div class="note-actions">
-          <button class="pin-btn">📌</button>
-          <button class="delete-btn">🗑️</button>
-        </div>
-      </div>
-  
-      <div class="note yellow">
-        <h3 class="note-title">Casual Task</h3>
-        <p class="note-content">This task is not urgent and can be done later.</p>
+      <div class="note yellow" [ngClass]="{'red': item.severity === 1, 'green' : item.severity === 2, 'yellow' : item.severity === 3}"
+       *ngFor="let item of notesData">
+        <h3 class="note-title" >{{item.title}}</h3>
+        <p class="note-content">{{item.content}}</p>
         <div class="note-actions">
           <button class="pin-btn">📌</button>
           <button class="delete-btn">🗑️</button>
