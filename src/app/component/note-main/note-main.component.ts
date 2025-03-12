@@ -49,4 +49,11 @@ getAllNote ()
 
 }
 
+deleteNote(id : number | undefined ){
+  if (id != undefined){
+  this.notesService.deleteNote(id);
+  this.getAllNote();
+  }
+}
+
 }

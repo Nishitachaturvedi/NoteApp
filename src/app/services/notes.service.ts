@@ -72,12 +72,49 @@ export class NotesService {
     const allNotes = localStorage.getItem("app_data");
     if(allNotes != null){
     const allNotesArray = JSON.parse(allNotes);
-    return allNotesArray;
+   const filteredNotesArray = allNotesArray.filter((element : INote)=>{
+                  return element.deleted == false;
+
+   })
+    return filteredNotesArray;
 
     }
     else {
             return [];
     }
+
+  }
+  deleteNote(id : number ){
+    let notes = localStorage.getItem('app_data');
+    if(notes != null){
+    let notesDataJson  = JSON.parse(notes);
+    
+    let objTobeDeleted  = notesDataJson.find((element : INote)=>{
+ 
+      return element.id == id;
+
+
+    });
+
+    objTobeDeleted.deleted = true;
+
+    let updatedNotes = JSON.stringify(notesDataJson);
+
+   localStorage.setItem('app_data', updatedNotes);
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
 
   }
 
