@@ -1,24 +1,9 @@
 <div class="note-app">
-    <button (click) = "createNote()" class="create-btn" >Create Note</button>
-  
-    <div class="notes-container" >
-      <div class="note yellow" [ngClass]="{'red': item.severity === 1, 'green' : item.severity === 2, 'yellow' : item.severity === 3}"
-       *ngFor="let item of notesData">
-        <h3 class="note-title" >
-          <input type="text" [(ngModel)] = "item.title" (ngModelChange)="updateNote(item)">
-          </h3>
-
-        <p class="note-content">
-          <textarea rows="4" cols="50"  [(ngModel)] = "item.content"> </textarea>
-          </p>
-        <div class="note-actions">
-          <button class="pin-btn">📌</button>
-          <button class="delete-btn" (click) = "deleteNote(item.id )">🗑️</button>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Color Legend -->
+  <!-- Header with Legend -->
+  <div class="header">
+    <button (click)="createNote()" class="create-btn">Create Note</button>
+    
+    <!-- Color Legend in Header -->
     <div class="legend">
       <div class="legend-item">
         <span class="legend-color red"></span> Very Important
@@ -31,4 +16,23 @@
       </div>
     </div>
   </div>
-  
+
+  <div class="notes-container">
+    <div class="note" [ngClass]="{'red': item.severity === 1, 'green' : item.severity === 2, 'yellow' : item.severity === 3}"
+      *ngFor="let item of notesData">
+      
+      <h3 class="note-title">
+        <input type="text" [(ngModel)]="item.title" (ngModelChange)="updateNote(item)" placeholder="Title...">
+      </h3>
+
+      <p class="note-content">
+        <textarea rows="4" [(ngModel)]="item.content" placeholder="Write your note here..."></textarea>
+      </p>
+
+      <div class="note-actions">
+        <button class="pin-btn" >📌</button>
+        <button class="delete-btn" (click)="deleteNote(item.id)">🗑️</button>
+      </div>
+    </div>
+  </div>
+</div>
