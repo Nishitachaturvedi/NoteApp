@@ -19,7 +19,7 @@
 
   <div class="notes-container">
     <div class="note" [ngClass]="{'red': item.severity === 1, 'green' : item.severity === 2, 'yellow' : item.severity === 3}"
-      *ngFor="let item of notesData">
+      *ngFor="let item of pinnedTasks">
       
       <h3 class="note-title">
         <input type="text" [(ngModel)]="item.title" (ngModelChange)="updateNote(item)" placeholder="Title...">
@@ -30,9 +30,39 @@
       </p>
 
       <div class="note-actions">
-        <button class="pin-btn" >📌</button>
-        <button class="delete-btn" (click)="deleteNote(item.id)">🗑️</button>
+        <button class="pin-btn"  (click)="pinNote(item.id)"><i class="pi pi-thumbtack"></i></button>
+        <button class="delete-btn" (click)="deleteNote(item.id)"><i class="pi pi-trash"></i></button>
       </div>
     </div>
+
+
+
+
+    
+  </div>
+
+
+  <div class="notes-container">
+    <div class="note" [ngClass]="{'red': item.severity === 1, 'green' : item.severity === 2, 'yellow' : item.severity === 3}"
+      *ngFor="let item of unpinnedTask">
+      
+      <h3 class="note-title">
+        <input type="text" [(ngModel)]="item.title" (ngModelChange)="updateNote(item)" placeholder="Title...">
+      </h3>
+
+      <p class="note-content">
+        <textarea rows="4" [(ngModel)]="item.content" placeholder="Write your note here..."></textarea>
+      </p>
+
+      <div class="note-actions">
+        <button class="pin-btn"  (click)="pinNote(item.id)"><i class="pi pi-thumbtack"></i></button>
+        <button class="delete-btn" (click)="deleteNote(item.id)"><i class="pi pi-trash"></i></button>
+      </div>
+    </div>
+
+
+
+
+    
   </div>
 </div>

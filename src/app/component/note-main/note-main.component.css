@@ -1,3 +1,4 @@
+
 /* Note App Container */
 .note-app {
   padding: 25px;
@@ -8,7 +9,7 @@
 
 /* Header */
 .header {
-  display: flex;
+  display: flex;@import "primeicons/primeicons.css";
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px; /* More space between header and notes */
@@ -125,16 +126,9 @@
 }
 
 /* Pin Button */
-.pin-btn:hover {
-  color: #ffcc00;
-  background: rgba(255, 204, 0, 0.2);
-}
+
 
 /* Delete Button */
-.delete-btn:hover {
-  color: red;
-  background: rgba(255, 0, 0, 0.2);
-}
 
 /* Click Animation */
 .pin-btn:active, .delete-btn:active {

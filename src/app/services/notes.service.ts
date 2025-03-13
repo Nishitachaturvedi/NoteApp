@@ -103,12 +103,6 @@ export class NotesService {
    localStorage.setItem('app_data', updatedNotes);
 
 
-
-
-
-
-
-
     }
 
 
@@ -140,6 +134,43 @@ export class NotesService {
   
   
   }
+
+  }
+
+  pinnedNote(id : number){
+
+    
+
+let notes = localStorage.getItem('app_data');
+
+
+
+if(notes != null){
+
+
+  let notesJson = JSON.parse(notes);
+
+
+  let toBeChanged =  notesJson.find((element : INote)=>{
+
+    return element.id == id;
+
+  })
+  if(toBeChanged.importance == false){
+    toBeChanged.importance = true;
+  }
+  else{
+    toBeChanged.importance = false;
+  }
+
+
+  let notesPinned = JSON.stringify(notesJson);
+ 
+
+  localStorage.setItem('app_data',notesPinned);
+
+
+}
 
   }
 

@@ -20,6 +20,8 @@ export class NoteMainComponent implements OnInit {
   }
 
   public notesData : INote[] = [];
+  public pinnedTasks : INote[] = [];
+  public unpinnedTask :INote[] = [];
 
 
   
@@ -46,6 +48,19 @@ getAllNote ()
 {
   this.notesData = this.notesService.getAllNotes();
 
+this.pinnedTasks = this.notesData.filter((element)=>{
+
+  return element.importance == true;
+
+
+})
+
+ this.unpinnedTask = this.notesData.filter((element)=>{
+
+  return element.importance == false;
+
+})
+
 
 }
 
@@ -60,6 +75,19 @@ deleteNote(id : number | undefined ){
 updateNote(data : INote){
 
   this.notesService.updateNotes(data);
+
+
+}
+
+
+pinNote(id : number | undefined){
+
+  if(id != undefined){
+
+  this.notesService.pinnedNote(id);
+  this.getAllNote();
+  }
+
 
 
 }
