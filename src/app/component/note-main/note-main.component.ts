@@ -11,8 +11,8 @@ export class NoteMainComponent implements OnInit {
 
   public data : INote = {
     
-    title : "Angular Study",
-    content : "I want to study angular and become pro in it",
+    title : "",
+    content : "",
     severity : 3,
     importance : false,
     deleted : false
@@ -54,6 +54,14 @@ deleteNote(id : number | undefined ){
   this.notesService.deleteNote(id);
   this.getAllNote();
   }
+}
+
+
+updateNote(data : INote){
+
+  this.notesService.updateNotes(data);
+
+
 }
 
 }

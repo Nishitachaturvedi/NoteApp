@@ -118,6 +118,31 @@ export class NotesService {
 
   }
 
+  updateNotes( data : INote ){
+
+    let currentData = localStorage.getItem('app_data');
+
+    if(currentData != null){
+    let currentDataJson = JSON.parse(currentData);
+    
+ let toBeUpdatedNote = currentDataJson.find((element : INote)=>{
+
+  return element.id == data.id;
+
+ })
+
+ Object.assign(toBeUpdatedNote,data); // updates/patches the new content . works for 2 objects(target,source).
+
+ let updatedNote = JSON.stringify(currentDataJson);
+
+ localStorage.setItem('app_data', updatedNote);
+
+  
+  
+  }
+
+  }
+
 
 
 }
