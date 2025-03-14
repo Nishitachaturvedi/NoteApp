@@ -1,18 +1,18 @@
 <div class="note-app">
   <!-- Header with Legend -->
   <div class="header">
-    <button (click)="createNote()" class="create-btn">Create Note</button>
+    <button (click)="createNote(3)" class="create-btn">Create Note</button>
     
     <!-- Color Legend in Header -->
     <div class="legend">
       <div class="legend-item">
-        <span class="legend-color red"></span> Very Important
+        <span class="legend-color red" (click)="createNote(1)"></span> Very Important
       </div>
       <div class="legend-item">
-        <span class="legend-color green"></span> Medium Important
+        <span class="legend-color green" (click)="createNote(2)"></span> Mid Important
       </div>
       <div class="legend-item">
-        <span class="legend-color yellow"></span> Less Important
+        <span class="legend-color yellow" (click)="createNote(3)"></span> Less Important
       </div>
     </div>
   </div>
@@ -26,11 +26,11 @@
       </h3>
 
       <p class="note-content">
-        <textarea rows="4" [(ngModel)]="item.content" placeholder="Write your note here..."></textarea>
+        <textarea rows="4" [(ngModel)]="item.content"(ngModelChange)="updateNote(item)" placeholder="Write your note here..."></textarea>
       </p>
 
       <div class="note-actions">
-        <button class="pin-btn"  (click)="pinNote(item.id)"><i class="pi pi-thumbtack"></i></button>
+        <button class="pin-btn" style="opacity: 1;" (click)="pinNote(item.id) "><i class="pi pi-thumbtack"></i></button>
         <button class="delete-btn" (click)="deleteNote(item.id)"><i class="pi pi-trash"></i></button>
       </div>
     </div>
@@ -51,11 +51,11 @@
       </h3>
 
       <p class="note-content">
-        <textarea rows="4" [(ngModel)]="item.content" placeholder="Write your note here..."></textarea>
+        <textarea rows="4" [(ngModel)]="item.content" (ngModelChange)="updateNote(item)" placeholder="Write your note here..."></textarea>
       </p>
 
       <div class="note-actions">
-        <button class="pin-btn"  (click)="pinNote(item.id)"><i class="pi pi-thumbtack"></i></button>
+        <button class="pin-btn"  (click)="pinNote(item.id)" [ngStyle]="{ 'opacity': 0.4 }"><i class="pi pi-thumbtack"></i></button>
         <button class="delete-btn" (click)="deleteNote(item.id)"><i class="pi pi-trash"></i></button>
       </div>
     </div>

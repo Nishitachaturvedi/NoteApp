@@ -55,6 +55,8 @@ export class NotesService {
       
       localStorage.setItem("app_data" ,arrForFirstItemJson ); // here we are setting the very first value of oue Key app_data in localStorage.
 
+
+
        
 
     }

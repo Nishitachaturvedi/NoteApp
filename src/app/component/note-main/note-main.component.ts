@@ -37,8 +37,9 @@ export class NoteMainComponent implements OnInit {
     
   }
 
-createNote(){
+createNote(severity : number){
 
+this.data.severity = severity;
 this.notesService.createNote(this.data);
 this.getAllNote ();
 
@@ -91,5 +92,6 @@ pinNote(id : number | undefined){
 
 
 }
+
 
 }
